@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="main_form" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightsystem.dashboardController">
+   <children>
+      <BorderPane layoutX="93.0" layoutY="61.0" prefHeight="600.0" prefWidth="1100.0" stylesheets="@designDashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="44.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="14.0" layoutY="-78.0" prefHeight="38.0" prefWidth="1100.0" visible="false" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button layoutX="1073.0" layoutY="6.0" mnemonicParsing="false" styleClass="close" stylesheets="@designDashboard.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="1045.0" layoutY="6.0" mnemonicParsing="false" styleClass="minimize" stylesheets="@designDashboard.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MINUS" size="1.2em" />
+                           </graphic>
+                        </Button>
+                        <Label layoutX="38.0" layoutY="8.0" text="Flight Management System">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <FontAwesomeIconView fill="#050505" glyphName="PLANE" layoutX="14.0" layoutY="26.0" size="1.5em" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="20.0" prefWidth="240.0" text=" Flight Management System">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLANE" size="1.3em" />
+                     </graphic>
+                  </Label>
+                  <Button fx:id="closeBtn" layoutX="1075.0" layoutY="10.0" mnemonicParsing="false" onAction="#close" styleClass="close" stylesheets="@designDashboard.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CLOSE" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="minimizeBtn" layoutX="1049.0" layoutY="10.0" mnemonicParsing="false" onAction="#minimize" styleClass="minimize" stylesheets="@designDashboard.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="MINUS" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@designDashboard.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Circle fill="#47637e" layoutX="97.0" layoutY="77.0" radius="63.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="47.0" layoutY="160.0" text="Welcome," textFill="#f4ecec">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user" alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="188.0" prefHeight="32.0" prefWidth="138.0" textFill="#f7f3f3">
+                     <font>
+                        <Font name="Times New Roman" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="homeBtn" alignment="CENTER" layoutX="19.0" layoutY="262.0" mnemonicParsing="false" onAction="#switchForm01" prefHeight="34.0" prefWidth="164.0" styleClass="nav-btn" stylesheets="@designDashboard.css" text="Home">
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#ece7e7" glyphName="HOME" size="2em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="InformationBtn" alignment="CENTER" layoutX="12.0" layoutY="410.0" mnemonicParsing="false" onAction="#switchForm01" prefHeight="34.0" prefWidth="162.0" styleClass="nav-btn" stylesheets="@designDashboard.css" text="Information">
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#ece7e7" glyphName="LIST" size="2em" />
+                     </graphic>
+                  </Button>
+                  <Line endX="100.0" layoutX="100.0" layoutY="230.0" startX="-100.0" />
+                  <Button fx:id="availableBtn" alignment="CENTER" layoutX="17.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchForm01" prefHeight="33.0" prefWidth="168.0" styleClass="nav-btn" stylesheets="@designDashboard.css" text="Available Flight">
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#ece7e7" glyphName="EDIT" size="1.8em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bookingBtn" alignment="CENTER" layoutX="13.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchForm01" prefWidth="160.0" styleClass="nav-btn" stylesheets="@designDashboard.css" text="Booking">
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#ece7e7" glyphName="TICKET" size="1.8em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="signoutBtn" layoutY="530.0" mnemonicParsing="false" onAction="#signout" styleClass="logout" stylesheets="@designDashboard.css" textFill="#2426b7">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eae3e3" glyphName="SIGN_OUT" size="1.8em" />
+                     </graphic>
+                  </Button>
+                  <Label layoutX="58.0" layoutY="538.0" text="Sign out" textFill="#fefffc">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="edit" layoutX="75.0" layoutY="65.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="36.0" styleClass="editButton" stylesheets="@designDashboard.css" />
+                  <FontAwesomeIconView fill="#151515" glyphName="EDIT" layoutX="88.0" layoutY="129.0" size="1.5em" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="Total" layoutX="14.0" layoutY="4.0" prefHeight="210.0" prefWidth="871.0" styleClass="white-bg" stylesheets="@designDashboard.css" visible="false">
+                     <children>
+                        <AnchorPane fx:id="home_income" layoutX="14.0" layoutY="7.0" prefHeight="195.0" prefWidth="260.0" styleClass="card1" stylesheets="@designDashboard.css">
+                           <children>
+                              <AnchorPane prefHeight="195.0" prefWidth="60.0" styleClass="card1-left" stylesheets="@designDashboard.css">
+                                 <children>
+                                    <FontAwesomeIconView fill="#efe9e9" glyphName="DOLLAR" layoutX="9.0" layoutY="123.0" size="6em" />
+                                 </children></AnchorPane>
+                              <Label layoutX="93.0" layoutY="153.0" text="Today Income" textFill="#f7eded">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="home_Income" layoutX="139.0" layoutY="14.0" text="1500" textFill="#f2eaea">
+                                 <font>
+                                    <Font name="Segoe UI Black" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="home_price" layoutX="306.0" layoutY="7.0" prefHeight="195.0" prefWidth="260.0" styleClass="card2" stylesheets="@designDashboard.css">
+                           <children>
+                              <AnchorPane prefHeight="195.0" prefWidth="60.0" styleClass="card2-left" stylesheets="@designDashboard.css">
+                                 <children>
+                                    <FontAwesomeIconView fill="#ecdfdf" glyphName="MONEY" layoutX="1.0" layoutY="123.0" size="6em" />
+                                 </children></AnchorPane>
+                              <Label layoutX="93.0" layoutY="153.0" text="Total Price" textFill="#f7eded">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="home_Price" layoutX="150.0" layoutY="14.0" text="1500" textFill="#f2eaea">
+                                 <font>
+                                    <Font name="Segoe UI Black" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="home_available" layoutX="597.0" layoutY="6.0" prefHeight="195.0" prefWidth="260.0" styleClass="card3" stylesheets="@designDashboard.css">
+                           <children>
+                              <AnchorPane prefHeight="195.0" prefWidth="60.0" styleClass="card3-left" stylesheets="@designDashboard.css">
+                                 <children>
+                                    <FontAwesomeIconView fill="#fcf8f8" glyphName="PLANE" layoutX="12.0" layoutY="123.0" size="6em" />
+                                 </children></AnchorPane>
+                              <Label layoutX="71.0" layoutY="153.0" text="Available Flight" textFill="#f4f2f2">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="home_Flight" layoutX="146.0" layoutY="14.0" text="1500" textFill="#f2eaea">
+                                 <font>
+                                    <Font name="Segoe UI Black" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
+                        <AreaChart fx:id="chart" layoutX="14.0" layoutY="211.0" prefHeight="339.0" prefWidth="798.0" title="Income chart">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="Flight_table" prefHeight="560.8" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="9.0" prefHeight="539.0" prefWidth="240.0" stylesheets="@designDashboard.css">
+                           <children>
+                              <TextField fx:id="FID" layoutX="102.0" layoutY="27.0" prefHeight="30.0" prefWidth="128.0" styleClass="textfield" stylesheets="@designDashboard.css" />
+                              <Label layoutX="19.0" layoutY="34.0" text="Flight ID:">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="FAID" layoutX="102.0" layoutY="71.0" prefHeight="30.0" prefWidth="128.0" styleClass="textfield" stylesheets="@designDashboard.css" />
+                              <Label layoutX="13.0" layoutY="78.0" text="Airline ID:">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1.0" layoutY="128.0" text="Departure date:">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="11.0" layoutY="175.0" text="Arrival date:">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="2.0" layoutY="223.0" text="Departure airport:">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="DA" layoutX="105.0" layoutY="216.0" prefHeight="30.0" prefWidth="128.0" styleClass="textfield" stylesheets="@designDashboard.css" />
+                              <Label layoutX="4.0" layoutY="270.0" text="Arrival airport:">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="AA" layoutX="105.0" layoutY="263.0" prefHeight="30.0" prefWidth="128.0" styleClass="textfield" stylesheets="@designDashboard.css" />
+                              <Label layoutX="25.0" layoutY="315.0" text="Seats:">
+                                 <font>
+                                    <Font name="Times New Roman" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="FS" layoutX="102.0" layoutY="309.0" prefHeight="30.0" prefWidth="128.0" styleClass="textfield" stylesheets="@designDashboard.css" />
+                              <DatePicker fx:id="DD" layoutX="89.0" layoutY="123.0" prefHeight="26.0" prefWidth="154.0" promptText="MM-DD-YYYY" stylesheets="@designDashboard.css" />
+                              <DatePicker fx:id="AD" layoutX="89.0" layoutY="170.0" prefHeight="26.0" prefWidth="154.0" promptText="MM-DD-YYYY" stylesheets="@designDashboard.css" />
+                              <Button fx:id="addBtn" layoutX="27.0" layoutY="417.0" mnemonicParsing="false" onAction="#availableFlightAdd" prefHeight="45.0" prefWidth="78.0" styleClass="add-btn" stylesheets="@designDashboard.css" text="Add" />
+                              <Button fx:id="updateBtn" layoutX="143.0" layoutY="417.0" mnemonicParsing="false" onAction="#availableFlightUpdate" prefHeight="45.0" prefWidth="78.0" styleClass="update-btn" stylesheets="@designDashboard.css" text="Update" />
+                              <Button fx:id="deleteBtn" layoutX="143.0" layoutY="479.0" mnemonicParsing="false" onAction="#availableFlightDelete" prefHeight="45.0" prefWidth="78.0" styleClass="delete-btn" stylesheets="@designDashboard.css" text="Delete" />
+                              <Button fx:id="resetBtn01" layoutX="27.0" layoutY="479.0" mnemonicParsing="false" onAction="#availableFlightReset" prefHeight="45.0" prefWidth="78.0" styleClass="reset-btn" stylesheets="@designDashboard.css" text="Reset" />
+                              <TextField fx:id="FP" layoutX="102.0" layoutY="355.0" prefHeight="30.0" prefWidth="128.0" styleClass="textfield" stylesheets="@designDashboard.css" />
+                              <Label layoutX="26.0" layoutY="360.0" text="Price:">
+                                 <font>
+                                    <Font name="Times New Roman" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane layoutX="272.0" layoutY="9.0" prefHeight="537.0" prefWidth="624.0" stylesheets="@designDashboard.css">
+                           <children>
+                              <TableView fx:id="tableViewFlight" layoutX="4.0" layoutY="67.0" onMouseClicked="#availableSelectFlightData" onSort="#availableSelectFlightData" prefHeight="462.0" prefWidth="615.0">
+                                <columns>
+                                  <TableColumn fx:id="FID_table" prefWidth="64.0" text="Flight ID" />
+                                  <TableColumn fx:id="AID_table" prefWidth="66.4000244140625" text="Airline ID" />
+                                    <TableColumn fx:id="DD_table" prefWidth="96.80001831054688" text="Departure date" />
+                                    <TableColumn fx:id="AD_table" prefWidth="79.20001220703125" text="Arrival date" />
+                                    <TableColumn fx:id="DA_table" prefWidth="114.400146484375" text="Departure airport" />
+                                    <TableColumn fx:id="AA_table" prefWidth="92.7998046875" text="Arrival airport" />
+                                    <TableColumn fx:id="S_table" prefWidth="47.19989013671875" text="Seats" />
+                                    <TableColumn fx:id="P_table" prefWidth="47.2000732421875" text="Price" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="searchBtn" layoutX="4.0" layoutY="19.0" onKeyTyped="#availableSearch" prefHeight="32.0" prefWidth="191.0" promptText="Search" styleClass="search" stylesheets="@designDashboard.css" />
+                              <FontAwesomeIconView glyphName="SEARCH" layoutX="14.0" layoutY="40.0" size="1.4em" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="Information_Form" prefHeight="560.8" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane fx:id="Flight_Cust" layoutX="14.0" layoutY="14.0" prefHeight="241.0" prefWidth="872.0" stylesheets="@designDashboard.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="23.0" layoutY="14.0" text="Flight ID:">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="flight_id" layoutX="160.0" layoutY="9.0" onAction="#FlightIDList" prefWidth="150.0" promptText="Choose" styleClass="combobox" stylesheets="@designDashboard.css" />
+                                    <Label layoutX="23.0" layoutY="50.0" text="Departure date:">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="23.0" layoutY="85.0" text="Arrival date:">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="23.0" layoutY="120.0" text="Departure airport:">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="23.0" layoutY="154.0" text="Arrival airport:">
+                                       <font>
+                                          <Font name="Times New Roman" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane fx:id="customer_Information" layoutX="328.0" layoutY="8.0" prefHeight="238.0" prefWidth="535.0" styleClass="info-card" stylesheets="@designDashboard.css">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="8.0" text="Customer Information" textFill="#f2efef">
+                                             <font>
+                                                <Font name="Times New Roman Bold" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="43.0" text="ID:" textFill="#faf5f5">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="77.0" text="Name:" textFill="#faf5f5">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="153.0" text="Email:" textFill="#faf5f5">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="276.0" layoutY="43.0" text="Phone:" textFill="#faf5f5">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="276.0" layoutY="77.0" text="Address:" textFill="#faf5f5">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="115.0" text="Gender:" textFill="#faf5f5">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="resetBtn" layoutX="309.0" layoutY="181.0" mnemonicParsing="false" onAction="#bookingCusReset" prefHeight="40.0" prefWidth="78.0" styleClass="reset-btn" stylesheets="@designDashboard.css" text="Reset" />
+                                          <Button fx:id="selectBtn" layoutX="428.0" layoutY="181.0" mnemonicParsing="false" onAction="#bookingCusSelect" prefHeight="40.0" prefWidth="78.0" styleClass="select-btn" stylesheets="@designDashboard.css" text="Select" />
+                                          <Label fx:id="cust_name" layoutX="77.0" layoutY="75.0" prefHeight="23.0" prefWidth="154.0" styleClass="io-textfield" stylesheets="@designDashboard.css" text="Label" />
+                                          <Label fx:id="cust_gender" layoutX="77.0" layoutY="113.0" prefHeight="23.0" prefWidth="154.0" styleClass="io-textfield" stylesheets="@designDashboard.css" text="Label" />
+                                          <Label fx:id="cust_mail" layoutX="77.0" layoutY="151.0" prefHeight="23.0" prefWidth="154.0" styleClass="io-textfield" stylesheets="@designDashboard.css" text="Label" />
+                                          <Label fx:id="cust_phone" layoutX="351.0" layoutY="41.0" prefHeight="23.0" prefWidth="154.0" styleClass="io-textfield" stylesheets="@designDashboard.css" text="Label" />
+                                          <Label fx:id="cust_address" layoutX="351.0" layoutY="75.0" prefHeight="23.0" prefWidth="154.0" styleClass="io-textfield" stylesheets="@designDashboard.css" text="Label" />
+                                          <ComboBox fx:id="cust_id" layoutX="74.0" layoutY="40.0" onAction="#CustIDList" prefHeight="26.0" prefWidth="155.0" promptText="Choose" styleClass="combobox" stylesheets="@designDashboard.css" />
+                                          <Button fx:id="checkBtn" layoutX="197.0" layoutY="184.0" mnemonicParsing="false" onAction="#checkBtnFunc" prefHeight="40.0" prefWidth="78.0" styleClass="select-btn" stylesheets="@designDashboard.css" text="Check" />
+                                          <Label layoutX="277.0" layoutY="115.0" prefHeight="20.0" prefWidth="63.0" text="Seats #:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Times New Roman" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cust_seats" layoutX="348.0" layoutY="112.0" prefHeight="26.0" prefWidth="158.0" styleClass="io-textfield" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Label fx:id="info_dd1" layoutX="158.0" layoutY="48.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                                    <Label fx:id="info_ad1" layoutX="160.0" layoutY="83.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                                    <Label fx:id="info_da1" layoutX="160.0" layoutY="118.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                                    <Label fx:id="info_aa1" layoutX="160.0" layoutY="152.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                                    <Button fx:id="selectBtn1" layoutX="235.0" layoutY="192.0" mnemonicParsing="false" onAction="#FlightSelectBtn01" prefHeight="39.0" prefWidth="74.0" styleClass="select-btn" stylesheets="@designDashboard.css" text="Select" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="14.0" layoutY="270.0" prefHeight="276.0" prefWidth="872.0" stylesheets="@designDashboard.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <Label layoutX="26.0" layoutY="14.0" text="Information">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="51.0" layoutY="104.0" text="Name:" textFill="#130202">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="51.0" layoutY="173.0" text="Email:" textFill="#130202">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="50.0" layoutY="210.0" text="Phone:" textFill="#130202">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="45.0" layoutY="251.0" text="Address:" textFill="#130202">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="48.0" layoutY="138.0" text="Gender:" textFill="#130202">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="53.0" layoutY="69.0" text="ID:" textFill="#0b0a0a">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="info_id" layoutX="124.0" layoutY="67.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_name" layoutX="124.0" layoutY="102.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_gender" layoutX="124.0" layoutY="136.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_email" layoutX="124.0" layoutY="171.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_phone" layoutX="124.0" layoutY="208.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_address" layoutX="124.0" layoutY="249.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label layoutX="367.0" layoutY="59.0" text="Flight ID:">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="367.0" layoutY="92.0" text="Departure date:">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="365.0" layoutY="128.0" text="Arrival date:">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="363.0" layoutY="163.0" text="Departure airport:">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="368.0" layoutY="199.0" text="Arrival airport:">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="367.0" layoutY="239.0" text="Seats:">
+                                 <font>
+                                    <Font name="Times New Roman" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="info_flightID" layoutX="506.0" layoutY="56.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_dd" layoutX="506.0" layoutY="91.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_ad" layoutX="506.0" layoutY="125.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_da" layoutX="506.0" layoutY="160.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_aa" layoutX="506.0" layoutY="197.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label fx:id="info_seats" layoutX="506.0" layoutY="238.0" prefHeight="23.0" prefWidth="154.0" styleClass="label-info" stylesheets="@designDashboard.css" text="Label" />
+                              <Label layoutX="688.0" layoutY="158.0" text="Total:">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="PayBtn" layoutX="766.0" layoutY="230.0" mnemonicParsing="false" onAction="#PayButton" prefHeight="40.0" prefWidth="78.0" styleClass="select-btn" stylesheets="@designDashboard.css" text="Pay" />
+                              <Label fx:id="total_field" layoutX="763.0" layoutY="157.0" prefHeight="32.0" prefWidth="84.0" styleClass="io-textfield" stylesheets="@designDashboard.css" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="Booking" prefHeight="560.8" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="538.0" prefWidth="870.0" stylesheets="@designDashboard.css">
+                           <children>
+                              <TableView fx:id="bookingtableView" layoutX="14.0" layoutY="69.0" prefHeight="462.0" prefWidth="847.0">
+                                <columns>
+                                  <TableColumn fx:id="BID_booking" prefWidth="72.0000171661377" text="Booking ID" />
+                                  <TableColumn fx:id="FID_booking" prefWidth="78.40001678466797" text="Flight ID" />
+                                    <TableColumn fx:id="CID_booking" prefWidth="75.0" text="Customer ID" />
+                                    <TableColumn fx:id="name_booking" prefWidth="133.5999755859375" text="Name" />
+                                    <TableColumn fx:id="phone_booking" prefWidth="132.80001831054688" text="Phone" />
+                                    <TableColumn fx:id="seat_booking" prefWidth="92.800048828125" text="Booked seats" />
+                                    <TableColumn fx:id="amount_booking" prefWidth="106.40008544921875" text="Total amount" />
+                                    <TableColumn fx:id="date_booking" prefWidth="152.0001220703125" text="Booking date" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="Booking_search" layoutX="14.0" layoutY="29.0" onKeyTyped="#bookingSearch" promptText="Search" styleClass="search" stylesheets="@designDashboard.css" />
+                              <FontAwesomeIconView glyphName="SEARCH" layoutX="26.0" layoutY="44.0" size="1.2em" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
