@@ -1,1 +1,1 @@
-# fligt-management
+# flight-management
